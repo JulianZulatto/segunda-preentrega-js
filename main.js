@@ -1,44 +1,40 @@
 
-document.getElementById("agregarBtn").addEventListener("click", function() {
+document.getElementById("agregarBoton").addEventListener("click", function() {
     agregarContacto();
 });
 
-document.getElementById("quitarBtn").addEventListener("click", function() {
+document.getElementById("quitarBoton").addEventListener("click", function() {
     quitarContacto();
 });
 
-document.getElementById("buscarBtn").addEventListener("click", function() {
+document.getElementById("buscarBoton").addEventListener("click", function() {
     buscarContacto();
 });
 
 
 class Contacto {
-    constructor(nombre, telefono) {
+    constructor(nombre, apellido, telefono, direccion, email) {
         this.nombre = nombre;
+        this.apellido = apellido;
         this.telefono = telefono;
+        this.direccion = direccion;
+        this.email = email
     }
 }
 
 let agenda = [];
 
-function crearContacto() {
-    let nombre = prompt("Ingrese el nombre del contacto:");
-    let telefono = prompt("Ingrese el teléfono del contacto:");
-
-    let nuevoContacto = new Contacto(nombre, telefono);
-    agenda.push(nuevoContacto);
-
-    alert("Contacto creado: " + nombre + " - " + telefono);
-}
-
 function agregarContacto() {
     let nombre = prompt("Ingrese el nombre del contacto a agregar:");
+    let apellido = prompt("Ingrese el apellido del contacto a agregar:");
     let telefono = prompt("Ingrese el teléfono del contacto a agregar:");
+    let direccion = prompt("Ingrese la direccion del contacto a agregar:");
+    let email = prompt("Ingrese el email del contacto a agregar:");
 
-    let nuevoContacto = new Contacto(nombre, telefono);
+    let nuevoContacto = new Contacto(nombre,apellido, telefono, direccion, email);
     agenda.push(nuevoContacto);
 
-    alert("Contacto agregado: " + nombre + " - " + telefono);
+    alert("Contacto agregado: " + nombre + " - " + apellido);
 }
 
 function quitarContacto() {
