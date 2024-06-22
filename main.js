@@ -11,6 +11,15 @@ document.getElementById("buscarBoton").addEventListener("click", function() {
     buscarContacto();
 });
 
+document.getElementById("editarBoton").addEventListener("click", function() {
+    editarContacto();
+});
+
+document.getElementById("filtroBoton").addEventListener("click", function() {
+    filtroDeContactos();
+});
+
+let agenda = [];
 
 class Contacto {
     constructor(nombre, apellido, telefono, direccion, email) {
@@ -22,7 +31,6 @@ class Contacto {
     }
 }
 
-let agenda = [];
 
 function agregarContacto() {
     let nombre = prompt("Ingrese el nombre del contacto a agregar:");
@@ -63,4 +71,46 @@ function buscarContacto() {
         alert('No se encontró el contacto con ese nombre.');
     }
 }
+
+
+function editarContacto() {
+
+    let nombreEditable = prompt('Ingrese el nombre del contacto que desea editar:')
+    let contactoEditable = agenda.find(contacto => contacto.nombre === nombreEditable);
+
+
+    if (contactoEditable) {
+    
+        contactoEditable.nombre = prompt('Ingrese el nuevo nombre del contacto')
+        contactoEditable.apellido = prompt('Ingrese el nuevo apellido del contacto')
+        contactoEditable.telefono = prompt('Ingrese el nuevo telefono del contacto')
+        contactoEditable.direccion = prompt('Ingrese la nueva direccion del contacto')
+        contactoEditable.email = prompt('Ingrese el nuevo email del contacto')
+
+        alert(`Contacto ${contactoEditable.nombre} actualizado con éxito.`);
+    } else {
+        alert(`Contacto con ID ${contactoEditable} no encontrado.`);
+    }
+}
+
+
+function filtroDeContactos(){
+let caracteristicaBuscada = prompt('Ingresa la característica a buscar en los contactos:');
+
+
+let contactosFiltrados = [];
+agenda.forEach(contacto => {
+    if (contacto.apellido === caracteristicaBuscada) {
+        contactosFiltrados.push(contacto);
+    }
+
+    let mensaje = 'Contactos con la característica buscada:\n';
+    contactosFiltrados.forEach(contacto => {
+        mensaje += 'Nombre: ' + contacto.nombre + ', Apellido: ' + contacto.apellido + '\n';
+    });
+
+    alert(mensaje);
+});}
+
+
 
